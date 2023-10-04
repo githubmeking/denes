@@ -29,4 +29,10 @@ DURATION_LIMIT = int(getenv("DURATION_LIMIT", "250"))
 
 COMMAND_PREFIXES = list(getenv("COMMAND_PREFIXES", "/ ! .").split())
 
-SUDO_USERS = list(map(int, getenv("SUDO_USERS").split()))
+SUDO_USERS_env = getenv("SUDO_USERS")
+if SUDO_USERS_env is not None:
+    SUDO_USERS = list(map(int, SUDO_USERS_env.split()))
+else:
+    # Varsayılan bir değer atayabilir veya hata mesajı gösterebilirsiniz
+    SUDO_USERS = []
+
